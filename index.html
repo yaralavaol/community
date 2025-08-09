@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Libra — The Future, Secured</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Poppins', 'sans-serif'],
+                        body: ['Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-orange': '#FF6B35', // Vibrant professional orange
+                        'brand-orange-light': '#FF8A65', // Light orange accent
+                        'brand-orange-dark': '#E55100', // Dark orange for contrast
+                        'brand-cream': '#FFFEF7', // Pure cream white
+                        'brand-white': '#FFFFFF', // Pure white
+                        'brand-gray': '#2C3E50', // Professional dark blue-gray
+                        'brand-gray-light': '#34495E', // Lighter gray for variety
+                        'accent-blue': '#3498DB', // Professional blue accent
+                        'accent-green': '#27AE60', // Success green
+                    },
+                    backgroundImage: {
+                        'gradient-orange': 'linear-gradient(135deg, #FF6B35 0%, #FF8A65 100%)',
+                        'gradient-orange-dark': 'linear-gradient(135deg, #E55100 0%, #FF6B35 100%)',
+                        'gradient-subtle': 'linear-gradient(135deg, #FFFEF7 0%, #FFF8E1 100%)',
+                    },
+                    boxShadow: {
+                        'orange': '0 4px 14px 0 rgba(255, 107, 53, 0.25)',
+                        'orange-lg': '0 10px 25px 0 rgba(255, 107, 53, 0.3)',
+                        'professional': '0 4px 20px 0 rgba(44, 62, 80, 0.1)',
+                    },
+                },
+            },
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+        }
+
+        .title-uppercase {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B35, #FF8A65);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px 0 rgba(255, 107, 53, 0.3);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #FF6B35, transparent);
+            height: 1px;
+            width: 100%;
+        }
+
+        /* Advanced Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.6); }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes textReveal {
+            from { 
+                transform: translateY(50px); 
+                opacity: 0; 
+                filter: blur(10px);
+            }
+            to { 
+                transform: translateY(0); 
+                opacity: 1; 
+                filter: blur(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-text-reveal {
+            animation: textReveal 1s ease-out forwards;
+        }
+
+        /* Parallax and Background Effects */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .geometric-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 138, 101, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(229, 81, 0, 0.1) 0%, transparent 50%);
+        }
+
+        .mesh-gradient {
+            background: linear-gradient(45deg, 
+                rgba(255, 107, 53, 0.9) 0%, 
+                rgba(255, 138, 101, 0.8) 25%, 
+                rgba(229, 81, 0, 0.9) 50%, 
+                rgba(255, 107, 53, 0.8) 75%, 
+                rgba(255, 138, 101, 0.9) 100%);
+            background-size: 400% 400%;
+            animation: meshMove 15s ease infinite;
+        }
+
+        @keyframes meshMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Interactive Elements */
+        .interactive-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .interactive-card:hover::before {
+            left: 100%;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Modern Button Styles */
+        .btn-modern {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #FF6B35, #FF8A65);
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-modern:hover::before {
+            left: 100%;
+        }
+
+        .btn-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Video Background Styles */
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modern Loading States */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Modern Typography Effects */
+        .text-shadow-glow {
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .text-3d {
+            text-shadow: 
+                1px 1px 0 #E55100,
+                2px 2px 0 #E55100,
+                3px 3px 0 #E55100,
+                4px 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Particles Background */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 107, 53, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 20s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* Additional Modern Enhancements */
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation for images */
+        .img-loading {
+            filter: blur(10px);
+            transition: filter 0.3s;
+        }
+
+        .img-loaded {
+            filter: blur(0);
+        }
+
+        /* Performance optimizations */
+        .will-change-transform {
+            will-change: transform;
+        }
+
+        /* Intersection observer animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--brand-orange);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--brand-orange-dark);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .animate-float {
+                animation-duration: 4s;
+            }
+            
+            .mesh-gradient {
+                background-size: 200% 200%;
+            }
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-float,
+            .animate-pulse-glow,
+            .animate-slide-in-left,
+            .animate-slide-in-right,
+            .animate-scale-in {
+                animation: none;
+            }
+            
+            .scroll-smooth {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-subtle text-brand-gray flex flex-col justify-between fade-in"
+      x-data="{ 
+        data: {}, 
+        mobileMenuOpen: false, 
+        loaded: false,
+        scrollY: 0,
+        initParticles() {
+          for(let i = 0; i < 50; i++) {
+            setTimeout(() => {
+              const particle = document.createElement('div');
+              particle.className = 'particle';
+              particle.style.left = Math.random() * 100 + '%';
+              particle.style.width = particle.style.height = Math.random() * 4 + 2 + 'px';
+              particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+              particle.style.animationDelay = Math.random() * 5 + 's';
+              document.querySelector('.particles-container')?.appendChild(particle);
+            }, i * 100);
+          }
+        },
+        initScrollAnimations() {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+              }
+            });
+          }, { threshold: 0.1 });
+          
+          document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        }
+      }"
+      x-init="
+        fetch('data/text-content.json').then(response => response.json()).then(json => { 
+          data = json; 
+          loaded = true; 
+          $nextTick(() => {
+            $el.classList.add('show');
+            initParticles();
+            initScrollAnimations();
+          });
+        });
+        window.addEventListener('scroll', () => scrollY = window.scrollY);
+      "
+      x-cloak>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-professional border-b-2 border-brand-orange">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl md:text-3xl font-bold tracking-wide font-display gradient-text" x-text="data.brand.name"></a>
+
+                <!-- Mobile menu button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 focus:outline-none text-brand-orange hover:bg-brand-orange hover:text-white rounded-lg transition-colors">
+                    <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg x-show="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <!-- Desktop navigation -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide font-body">
+                    <template x-for="item in data.navigation" :key="item.label">
+                        <a :href="item.href" class="text-brand-gray hover:text-brand-orange transition-colors duration-200 px-3 py-2 rounded-md hover:bg-brand-orange hover:bg-opacity-10" x-text="item.label"></a>
+                    </template>
+                    <a href="pledge-explained.html" class="text-brand-gray hover:text-brand-orange transition-colors duration-200 px-3 py-2 rounded-md hover:bg-brand-orange hover:bg-opacity-10">Core Team Pledge</a>
+                    <a href="faq.html" class="text-brand-gray hover:text-brand-orange transition-colors duration-200 px-3 py-2 rounded-md hover:bg-brand-orange hover:bg-opacity-10" x-text="data.buttons.faq"></a>
+                    <div class="flex space-x-4 items-center ml-4 pl-4 border-l border-brand-orange border-opacity-30">
+                        <!-- GitHub -->
+                        <a href="https://github.com/0LNetworkCommunity" target="_blank" rel="noopener noreferrer" class="text-brand-gray hover:text-brand-orange transition-colors p-2 rounded-full hover:bg-brand-orange hover:bg-opacity-10">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <!-- X (Twitter) -->
+                        <a href="https://x.com/0LNetwork" target="_blank" rel="noopener noreferrer" class="text-brand-gray hover:text-brand-orange transition-colors p-2 rounded-full hover:bg-brand-orange hover:bg-opacity-10">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <!-- Discord -->
+                        <a href="https://discord.com/servers/0l-contributors-833074824447655976" target="_blank" rel="noopener noreferrer" class="text-brand-gray hover:text-brand-orange transition-colors p-2 rounded-full hover:bg-brand-orange hover:bg-opacity-10">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile navigation menu -->
+            <div x-show="mobileMenuOpen" x-transition class="md:hidden mt-6 pb-4 bg-white rounded-lg shadow-orange mt-4">
+                <div class="flex flex-col space-y-2 p-4">
+                    <template x-for="item in data.navigation" :key="item.label">
+                        <a :href="item.href" class="text-brand-gray hover:text-brand-orange transition-colors font-medium py-3 px-4 rounded-md hover:bg-brand-orange hover:bg-opacity-10" x-text="item.label" @click="mobileMenuOpen = false"></a>
+                    </template>
+                    <a href="pledge-explained.html" class="text-brand-gray hover:text-brand-orange transition-colors font-medium py-3 px-4 rounded-md hover:bg-brand-orange hover:bg-opacity-10" @click="mobileMenuOpen = false">Core Team Pledge</a>
+                    <a href="faq.html" class="text-brand-gray hover:text-brand-orange transition-colors font-medium py-3 px-4 rounded-md hover:bg-brand-orange hover:bg-opacity-10" @click="mobileMenuOpen = false" x-text="data.buttons.faq"></a>
+                    <div class="flex space-x-4 items-center pt-4 mt-4 border-t border-brand-orange border-opacity-20">
+                        <!-- GitHub -->
+                        <a href="https://github.com/0LNetworkCommunity" target="_blank" rel="noopener noreferrer" class="text-brand-gray hover:text-brand-orange transition-colors p-2 rounded-full hover:bg-brand-orange hover:bg-opacity-10">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <!-- X (Twitter) -->
+                        <a href="https://x.com/0LNetwork" target="_blank" rel="noopener noreferrer" class="text-brand-gray hover:text-brand-orange transition-colors p-2 rounded-full hover:bg-brand-orange hover:bg-opacity-10">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <!-- Discord -->
+                        <a href="https://discord.com/servers/0l-contributors-833074824447655976" target="_blank" rel="noopener noreferrer" class="text-brand-gray hover:text-brand-orange transition-colors p-2 rounded-full hover:bg-brand-orange hover:bg-opacity-10">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden mesh-gradient">
+        <!-- Particles Background -->
+        <div class="particles-container"></div>
+        
+        <!-- Video Background (placeholder for actual video) -->
+        <div class="absolute inset-0 z-0">
+            <div class="video-overlay"></div>
+            <!-- Placeholder for video - you can replace this div with actual video element -->
+            <div class="absolute inset-0 bg-gradient-to-br from-orange-600 via-orange-500 to-red-600 opacity-90"></div>
+        </div>
+
+        <!-- Animated Background Elements -->
+        <div class="absolute top-20 left-10 w-32 h-32 bg-orange-400 bg-opacity-15 rounded-full animate-float"></div>
+        <div class="absolute bottom-20 right-10 w-24 h-24 bg-red-400 bg-opacity-12 rounded-full animate-float" style="animation-delay: -3s;"></div>
+        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-yellow-400 bg-opacity-10 rounded-full animate-float" style="animation-delay: -1.5s;"></div>
+        
+        <!-- Additional animated circles -->
+        <div class="absolute top-10 right-1/4 w-20 h-20 bg-pink-400 bg-opacity-8 rounded-full animate-float" style="animation-delay: -2s;"></div>
+        <div class="absolute bottom-32 left-20 w-28 h-28 bg-purple-400 bg-opacity-14 rounded-full animate-float" style="animation-delay: -4s;"></div>
+        <div class="absolute top-1/3 right-20 w-12 h-12 bg-blue-400 bg-opacity-16 rounded-full animate-float" style="animation-delay: -0.5s;"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-18 h-18 bg-green-400 bg-opacity-9 rounded-full animate-float" style="animation-delay: -2.5s;"></div>
+        <div class="absolute top-40 left-1/2 w-14 h-14 bg-indigo-400 bg-opacity-11 rounded-full animate-float" style="animation-delay: -1s;"></div>
+        <div class="absolute bottom-40 right-1/3 w-22 h-22 bg-teal-400 bg-opacity-13 rounded-full animate-float" style="animation-delay: -3.5s;"></div>
+        <div class="absolute top-60 right-16 w-10 h-10 bg-cyan-400 bg-opacity-15 rounded-full animate-float" style="animation-delay: -0.8s;"></div>
+        <div class="absolute bottom-60 left-16 w-26 h-26 bg-amber-400 bg-opacity-7 rounded-full animate-float" style="animation-delay: -4.2s;"></div>
+        <div class="absolute top-2/3 left-12 w-15 h-15 bg-rose-400 bg-opacity-12 rounded-full animate-float" style="animation-delay: -1.8s;"></div>
+        
+        <!-- Extra animated circles for more density -->
+        <div class="absolute top-16 left-1/3 w-8 h-8 bg-lime-400 bg-opacity-18 rounded-full animate-float" style="animation-delay: -0.3s;"></div>
+        <div class="absolute top-3/4 right-12 w-30 h-30 bg-orange-300 bg-opacity-6 rounded-full animate-float" style="animation-delay: -5s;"></div>
+        <div class="absolute bottom-16 left-1/2 w-13 h-13 bg-fuchsia-400 bg-opacity-14 rounded-full animate-float" style="animation-delay: -2.8s;"></div>
+        <div class="absolute top-1/4 left-8 w-19 h-19 bg-emerald-400 bg-opacity-10 rounded-full animate-float" style="animation-delay: -1.2s;"></div>
+        <div class="absolute bottom-1/3 right-8 w-11 h-11 bg-violet-400 bg-opacity-17 rounded-full animate-float" style="animation-delay: -3.8s;"></div>
+        <div class="absolute top-44 right-1/2 w-21 h-21 bg-sky-400 bg-opacity-9 rounded-full animate-float" style="animation-delay: -0.7s;"></div>
+        <div class="absolute bottom-44 left-1/4 w-17 h-17 bg-red-300 bg-opacity-11 rounded-full animate-float" style="animation-delay: -4.5s;"></div>
+        <div class="absolute top-28 left-20 w-9 h-9 bg-yellow-300 bg-opacity-19 rounded-full animate-float" style="animation-delay: -1.3s;"></div>
+        <div class="absolute bottom-28 right-20 w-23 h-23 bg-pink-300 bg-opacity-8 rounded-full animate-float" style="animation-delay: -2.1s;"></div>
+        <div class="absolute top-52 left-4 w-12 h-12 bg-blue-300 bg-opacity-15 rounded-full animate-float" style="animation-delay: -3.2s;"></div>
+        <div class="absolute bottom-52 right-4 w-25 h-25 bg-green-300 bg-opacity-7 rounded-full animate-float" style="animation-delay: -0.9s;"></div>
+        <div class="absolute top-36 right-6 w-16 h-16 bg-purple-300 bg-opacity-13 rounded-full animate-float" style="animation-delay: -4.8s;"></div>
+        <div class="absolute bottom-36 left-6 w-20 h-20 bg-teal-300 bg-opacity-12 rounded-full animate-float" style="animation-delay: -1.6s;"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-6xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-8 tracking-wide leading-tight font-display text-white text-shadow-glow animate-text-reveal" 
+                    x-text="data.hero?.title" 
+                    style="animation-delay: 0.5s; opacity: 0;"></h1>
+                <p class="uppercase text-2xl md:text-3xl font-light opacity-95 max-w-4xl mx-auto tracking-normal leading-relaxed font-body mb-12 md:mb-16 text-white animate-text-reveal" 
+                   x-text="data.hero?.subtitle"
+                   style="animation-delay: 1s; opacity: 0;"></p>
+                <div class="flex flex-col gap-6 items-center md:flex-row md:justify-center animate-scale-in" style="animation-delay: 1.5s; opacity: 0;">
+                    <a href="faq.html" 
+                       class="btn-modern hover-lift" 
+                       x-text="data.buttons?.faq"></a>
+                    <a href="#about" 
+                       class="inline-block px-10 md:px-12 py-4 border-2 border-white text-white rounded-full text-lg md:text-xl font-semibold tracking-wide font-body hover:bg-white hover:text-brand-orange transition-all duration-300 hover-lift glass-effect">
+                       Learn More
+                    </a>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <svg class="w-6 h-6 text-white opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24 bg-gradient-subtle geometric-pattern relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 section-divider"></div>
+        <!-- Animated background elements -->
+        <div class="absolute top-10 left-10 w-40 h-40 bg-brand-orange bg-opacity-10 rounded-full animate-float"></div>
+        <div class="absolute bottom-10 right-10 w-32 h-32 bg-brand-orange bg-opacity-10 rounded-full animate-float" style="animation-delay: -2s;"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+                    <div class="scroll-reveal animate-slide-in-left">
+                        <h2 class="text-5xl md:text-6xl font-bold mb-8 font-display title-uppercase gradient-text text-3d" x-text="data.about?.title"></h2>
+                        <p class="text-xl md:text-2xl font-light leading-relaxed font-body mb-8 text-brand-gray" x-text="data.about?.description"></p>
+                        <p class="text-xl md:text-2xl font-light leading-relaxed font-body text-brand-gray mb-8" x-text="data.about?.mission"></p>
+                        <div class="mt-8">
+                            <a href="#inventions" class="inline-block px-8 py-4 bg-gradient-orange text-white rounded-full font-semibold text-lg tracking-wide hover:shadow-orange-lg transform hover:scale-105 transition-all duration-300 animate-pulse-glow">
+                                <span class="flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Explore Technology
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="space-y-6 md:space-y-8 scroll-reveal animate-slide-in-right">
+                        <template x-for="(highlight, index) in data.aboutHighlights" :key="highlight.title">
+                            <div class="interactive-card bg-white bg-opacity-95 border-l-4 border-brand-orange rounded-xl p-8 md:p-10 shadow-professional hover:shadow-orange-lg transition-all duration-300"
+                                 :style="`animation-delay: ${index * 0.2}s`">
+                                <!-- Icon based on title -->
+                                <div class="w-16 h-16 bg-gradient-orange rounded-full flex items-center justify-center mb-6 animate-pulse-glow">
+                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path x-show="highlight.title.includes('Century')" d="M12 2l3.09 6.26L22 9l-5 4.87L18.18 20 12 16.77 5.82 20 7 13.87 2 9l6.91-.74L12 2z"></path>
+                                        <path x-show="highlight.title.includes('Weather')" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                                        <path x-show="highlight.title.includes('Rails')" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        <path x-show="!highlight.title.includes('Century') && !highlight.title.includes('Weather') && !highlight.title.includes('Rails')" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl md:text-3xl font-semibold font-display mb-6 text-brand-orange" x-text="highlight.title"></h3>
+                                <p class="font-body font-light text-lg md:text-xl text-brand-gray-light leading-relaxed" x-text="highlight.description"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Pillars Section -->
+    <section class="py-16 md:py-24 bg-gradient-subtle relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 section-divider"></div>
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-bold mb-12 md:mb-20 font-display title-uppercase gradient-text text-3d scroll-reveal" x-text="data.foundation?.title"></h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                    <template x-for="(pillar, index) in data.foundation?.pillars" :key="pillar.title">
+                        <div class="interactive-card bg-white rounded-xl p-8 md:p-10 shadow-professional border-t-4 border-brand-orange scroll-reveal"
+                             :style="`animation-delay: ${index * 0.3}s`">
+                            <div class="w-20 h-20 bg-gradient-orange rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse-glow">
+                                <!-- Dynamic icons based on pillar content -->
+                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path x-show="pillar.title.includes('Common')" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    <path x-show="pillar.title.includes('Independent')" d="M12 2l3.09 6.26L22 9l-5 4.87L18.18 20 12 16.77 5.82 20 7 13.87 2 9l6.91-.74L12 2z"></path>
+                                    <path x-show="pillar.title.includes('Open')" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    <path x-show="!pillar.title.includes('Common') && !pillar.title.includes('Independent') && !pillar.title.includes('Open')" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-semibold font-display mb-8 text-brand-gray" x-text="pillar.title"></h3>
+                            <p class="font-body font-light leading-relaxed text-lg md:text-xl text-brand-gray-light" x-text="pillar.description"></p>
+                            
+                            <!-- Decorative element -->
+                            <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-orange opacity-10 rounded-bl-full"></div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inventions Section -->
+    <section id="inventions" class="py-16 md:py-24 bg-gradient-subtle parallax-bg relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 section-divider"></div>
+        <!-- Animated background elements -->
+        <div class="absolute top-10 right-10 w-32 h-32 bg-brand-orange bg-opacity-10 rounded-full animate-float"></div>
+        <div class="absolute bottom-10 left-10 w-40 h-40 bg-brand-orange bg-opacity-10 rounded-full animate-float" style="animation-delay: -3s;"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12 md:mb-20 scroll-reveal">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-8 font-display title-uppercase gradient-text text-3d" x-text="data.inventions?.title"></h2>
+                    <p class="text-2xl md:text-3xl font-light max-w-5xl mx-auto font-body text-brand-gray" x-text="data.inventions?.subtitle"></p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                    <template x-for="(item, index) in data.inventions?.items" :key="item.title">
+                        <div class="interactive-card bg-white bg-opacity-95 rounded-xl p-8 md:p-10 shadow-professional border border-brand-orange border-opacity-20 scroll-reveal hover:shadow-orange-lg transition-all duration-300" 
+                             :class="item.fullWidth ? 'md:col-span-2' : ''"
+                             :style="`animation-delay: ${index * 0.2}s`">
+                            <div class="flex items-start space-x-6">
+                                <div class="w-16 h-16 bg-gradient-orange rounded-xl flex items-center justify-center flex-shrink-0 animate-pulse-glow">
+                                    <!-- Dynamic icons based on item title -->
+                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path x-show="item.title.includes('Blockchain')" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                                        <path x-show="item.title.includes('Voice')" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4z M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5H10.5v-1.546A6.001 6.001 0 0016 10v-.357a.75.75 0 00-1.5 0V10a4.5 4.5 0 11-9 0v-.357z"></path>
+                                        <path x-show="item.title.includes('Index')" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2zm2 0V5a2 2 0 012-2h6a2 2 0 012 2v2H5z"></path>
+                                        <path x-show="item.title.includes('Proof')" d="M9 12l2 2 4-4m5-6a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        <path x-show="item.title.includes('Wallet')" d="M4 7a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2H4zm0 2h16v6H4V9zm12 2a1 1 0 100 2h2a1 1 0 100-2h-2z"></path>
+                                        <path x-show="item.title.includes('VDF')" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        <path x-show="!item.title.includes('Blockchain') && !item.title.includes('Voice') && !item.title.includes('Index') && !item.title.includes('Proof') && !item.title.includes('Wallet') && !item.title.includes('VDF')" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl md:text-3xl font-semibold font-display mb-6 text-brand-orange" x-text="item.title"></h3>
+                                    <p class="font-body font-light text-lg md:text-xl text-brand-gray-light leading-relaxed" x-text="item.description"></p>
+                                    
+                                    <!-- Progress bar animation -->
+                                    <div class="mt-6 w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-gradient-orange h-2 rounded-full animate-pulse" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Interactive Demo Section -->
+                <div class="mt-16 scroll-reveal">
+                    <div class="bg-gradient-orange text-white rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-3xl md:text-4xl font-bold mb-6">Experience the Technology</h3>
+                            <p class="text-xl mb-8 opacity-90">Interactive demos and real-time blockchain data</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="bg-white bg-opacity-20 rounded-lg p-6 glass-effect">
+                                    <div class="text-3xl font-bold mb-2">3,280,020,030</div>
+                                    <div class="text-sm opacity-80">Transactions Processed</div>
+                                </div>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-6 glass-effect">
+                                    <div class="text-3xl font-bold mb-2" x-text="`${Math.floor(Math.random() * 500)}`"></div>
+                                    <div class="text-sm opacity-80">Active Validators</div>
+                                </div>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-6 glass-effect">
+                                    <div class="text-3xl font-bold mb-2">99.98%</div>
+                                    <div class="text-sm opacity-80">Network Uptime</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonial Section -->
+    <section class="py-16 md:py-24 bg-brand-gray text-white relative overflow-hidden">
+        <div class="absolute inset-0 mesh-gradient opacity-20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-shadow-glow">What Builders Are Saying</h2>
+                <p class="text-xl mb-12 opacity-90">Hear from the community that's building the future</p>
+                
+                <!-- Video Player Placeholder -->
+                <div class="relative bg-black rounded-2xl overflow-hidden shadow-orange-lg mb-12">
+                    <div class="aspect-w-16 aspect-h-9 bg-gradient-orange flex items-center justify-center">
+                        <!-- Placeholder for actual video -->
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:bg-opacity-30 transition-all">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <p class="text-lg">Click to play community testimonial</p>
+                            <p class="text-sm opacity-70 mt-2">Real builders, real impact stories</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Quotes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6 glass-effect">
+                        <div class="text-4xl text-brand-orange mb-4">"</div>
+                        <p class="italic mb-4">"Open Libra's infrastructure allowed us to launch our health research DAO in weeks, not months."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-brand-orange rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">Dr</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Dr. Sarah Chen</p>
+                                <p class="text-sm opacity-70">Medical Research DAO</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6 glass-effect">
+                        <div class="text-4xl text-brand-orange mb-4">"</div>
+                        <p class="italic mb-4">"The proof-of-fee consensus is a game changer for sustainable blockchain operations."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-brand-orange rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">M</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Marcus Johnson</p>
+                                <p class="text-sm opacity-70">Infrastructure Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Section - AI for Health Sciences Fund -->
+    <section id="example" class="py-16 md:py-24 bg-gradient-subtle relative">
+        <div class="absolute top-0 left-0 right-0 h-1 section-divider"></div>
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12 md:mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 font-display title-uppercase gradient-text" x-text="data.example.title"></h2>
+                    <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto font-body text-brand-gray-light" x-text="data.example.description"></p>
+                </div>
+
+                <!-- Example Sections Grid -->
+                <div class="grid grid-cols-1 gap-8 md:gap-10 mb-12 md:mb-16">
+                    <template x-for="section in data.example.sections" :key="section.id">
+                        <div class="bg-white rounded-xl p-8 md:p-10 shadow-professional hover-lift border-l-4 border-brand-orange">
+                            <h3 class="text-2xl md:text-3xl font-semibold font-display mb-6 text-brand-orange" x-text="section.title"></h3>
+                            <p class="font-body font-light leading-relaxed text-lg md:text-xl text-brand-gray-light" x-text="section.body"></p>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Summary -->
+                <div class="text-center bg-gradient-orange text-white rounded-xl p-8 md:p-12 shadow-orange-lg">
+                    <p class="text-xl md:text-2xl font-light leading-relaxed font-body" x-text="data.example.summary"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learn Section: Governance + Documentation (two columns) -->
+    <section id="learn" class="py-16 md:py-24 bg-gradient-subtle">
+        <div class="absolute top-0 left-0 right-0 h-1 section-divider"></div>
+        <!-- Animated background elements -->
+        <div class="absolute top-16 left-16 w-24 h-24 bg-brand-orange bg-opacity-10 rounded-full animate-float"></div>
+        <div class="absolute bottom-16 right-16 w-32 h-32 bg-brand-orange bg-opacity-10 rounded-full animate-float" style="animation-delay: -2s;"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
+                    <!-- Governance Column (anchored) -->
+                    <div id="governance" class="bg-gradient-subtle rounded-xl p-8 md:p-10 shadow-professional hover-lift border-t-4 border-brand-orange">
+                        <div class="w-16 h-16 bg-gradient-orange rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold font-display title-uppercase mb-6 text-brand-gray" x-text="data.governance.title"></h2>
+                        <p class="text-lg md:text-xl font-light font-body text-brand-gray-light" x-text="data.governance.description"></p>
+                    </div>
+
+                    <!-- Documentation Column (anchored) -->
+                    <div id="documentation" class="bg-gradient-subtle rounded-xl p-8 md:p-10 shadow-professional hover-lift border-t-4 border-brand-orange">
+                        <div class="w-16 h-16 bg-gradient-orange rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold font-display title-uppercase mb-6 text-brand-gray" x-text="data.documentation.title"></h2>
+                        <p class="text-lg md:text-xl font-light font-body text-brand-gray-light" x-text="data.documentation.description"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Team Pledge Section -->
+    <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1 section-divider"></div>
+        <!-- Animated background elements -->
+        <div class="absolute top-10 right-10 w-32 h-32 bg-brand-orange bg-opacity-10 rounded-full animate-float"></div>
+        <div class="absolute bottom-10 left-10 w-40 h-40 bg-brand-orange bg-opacity-10 rounded-full animate-float" style="animation-delay: -3s;"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-bold mb-8 font-display title-uppercase gradient-text text-3d scroll-reveal">The Core Pledge</h2>
+                <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto font-body text-brand-gray mb-12 scroll-reveal">Understanding the foundation and commitment that drives Open Libra forward</p>
+                
+                <!-- Pledge Quote -->
+                <div class="bg-gradient-subtle rounded-2xl p-8 md:p-12 mb-12 shadow-professional scroll-reveal">
+                    <blockquote class="text-lg md:text-xl font-light leading-relaxed text-brand-gray italic">
+                        "We Took Libra from Facebook to Fulfill the Promise of Good Capital by Producing the Best Open Asset which is Fiercely Independent, Uses Modern Tools, Has Plans Measured in Centuries to Become an Unstoppable Force In Society"
+                    </blockquote>
+                </div>
+
+                <!-- Key Points Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center scroll-reveal">
+                        <div class="w-20 h-20 bg-gradient-orange rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-glow">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-brand-gray">Independent Capital</h3>
+                        <p class="text-brand-gray-light">Fiercely independent from traditional financial institutions and corporate influence</p>
+                    </div>
+                    <div class="text-center scroll-reveal" style="animation-delay: 0.2s;">
+                        <div class="w-20 h-20 bg-gradient-orange rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-glow">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-brand-gray">Century-Scale Thinking</h3>
+                        <p class="text-brand-gray-light">Plans and strategies designed to last and thrive across multiple centuries</p>
+                    </div>
+                    <div class="text-center scroll-reveal" style="animation-delay: 0.4s;">
+                        <div class="w-20 h-20 bg-gradient-orange rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-glow">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-brand-gray">Modern Tools</h3>
+                        <p class="text-brand-gray-light">AI-powered strategies and cutting-edge blockchain technology</p>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="scroll-reveal">
+                    <a href="pledge-explained.html" class="inline-block px-12 py-4 bg-gradient-orange text-white rounded-full font-semibold text-lg tracking-wide hover:shadow-orange-lg transform hover:scale-105 transition-all duration-300">
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Read The Core Pledge
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 relative overflow-hidden">
+        <div class="absolute inset-0 mesh-gradient"></div>
+        <!-- Animated background elements -->
+        <div class="absolute top-10 left-10 w-40 h-40 bg-white bg-opacity-10 rounded-full animate-float"></div>
+        <div class="absolute bottom-10 right-10 w-32 h-32 bg-white bg-opacity-10 rounded-full animate-float" style="animation-delay: -2s;"></div>
+        <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-white bg-opacity-10 rounded-full animate-float" style="animation-delay: -4s;"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-5xl mx-auto text-center text-white scroll-reveal">
+                <h2 class="text-5xl md:text-6xl font-bold mb-8 font-display title-uppercase text-shadow-glow" x-text="data.cta?.title"></h2>
+                <p class="text-2xl md:text-3xl font-light opacity-95 mb-12 md:mb-16 font-body" x-text="data.cta?.description"></p>
+                
+                <!-- Enhanced CTA Buttons -->
+                <div class="flex flex-col gap-6 justify-center md:flex-row mb-12">
+                    <template x-for="button in data.cta?.buttons" :key="button.label">
+                        <a :href="button.href" 
+                           class="btn-modern text-xl px-12 py-5 transform hover:scale-105 transition-all duration-300" 
+                           x-text="button.label"></a>
+                    </template>
+                </div>
+
+                <!-- Additional Interactive Elements -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Real-Time Analytics</h3>
+                        <p class="opacity-80">Monitor your investments with live data</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow" style="animation-delay: 0.5s;">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Verified Security</h3>
+                        <p class="opacity-80">Bank-grade security with blockchain transparency</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-glow" style="animation-delay: 1s;">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Community Driven</h3>
+                        <p class="opacity-80">Join thousands of builders and investors</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-1 section-divider"></div>
+    </section>
+
+    <!-- Links Section (restored near footer) -->
+    <section id="links" class="bg-brand-gray py-16 md:py-24 text-white relative">
+        <div class="absolute top-0 left-0 right-0 h-1 section-divider"></div>
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12 md:mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 font-display title-uppercase text-white" x-text="data.links.title"></h2>
+                    <p class="text-xl md:text-2xl font-light opacity-90 max-w-4xl mx-auto font-body" x-text="data.links.description"></p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                    <template x-for="category in data.links.categories" :key="category.title">
+                        <div class="space-y-6">
+                            <h3 class="text-2xl md:text-3xl font-semibold font-display mb-6 text-brand-orange" x-text="category.title"></h3>
+                            <div class="space-y-4">
+                                <template x-for="link in category.links" :key="link.label">
+                                    <div class="bg-brand-gray-light rounded-lg p-6 hover:bg-opacity-80 hover:shadow-orange transition-all duration-200 hover-lift border-l-4 border-brand-orange">
+                                        <a :href="link.href" class="block" target="_blank" rel="noopener noreferrer">
+                                            <h4 class="font-semibold font-display mb-2 text-brand-orange-light text-lg" x-text="link.label"></h4>
+                                            <p class="text-sm font-light opacity-80 font-body" x-text="link.description"></p>
+                                        </a>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer with Social Proof -->
+    <footer class="bg-gray-900 text-gray-300 py-16 relative overflow-hidden">
+        <!-- Animated background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"></div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-10 right-10 w-32 h-32 bg-brand-orange rounded-full animate-float"></div>
+            <div class="absolute bottom-20 left-10 w-24 h-24 bg-brand-orange rounded-full animate-float" style="animation-delay: -3s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <!-- Stats Row -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16 text-center">
+                <div class="animate-scale-in">
+                    <div class="text-4xl font-bold text-brand-orange mb-2 counter-animation">100k+</div>
+                    <div class="text-gray-400">Active Users</div>
+                </div>
+                <div class="animate-scale-in" style="animation-delay: 0.2s;">
+                    <div class="text-4xl font-bold text-brand-orange mb-2 counter-animation">$50M+</div>
+                    <div class="text-gray-400">Total Value Locked</div>
+                </div>
+                <div class="animate-scale-in" style="animation-delay: 0.4s;">
+                    <div class="text-4xl font-bold text-brand-orange mb-2 counter-animation">150+</div>
+                    <div class="text-gray-400">Countries</div>
+                </div>
+                <div class="animate-scale-in" style="animation-delay: 0.6s;">
+                    <div class="text-4xl font-bold text-brand-orange mb-2 counter-animation">24/7</div>
+                    <div class="text-gray-400">Support</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info with Enhanced Logo -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <img src="assets/logo.svg" alt="Open Libra" class="w-12 h-12 mr-4 filter brightness-110">
+                        <span class="text-2xl font-bold text-white">Open Libra</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 text-lg leading-relaxed">
+                        Building the future of decentralized finance with transparency, security, and community at our core.
+                        Join the movement towards financial freedom.
+                    </p>
+                    <!-- Social Links with Hover Effects -->
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-brand-orange transition-colors duration-300 transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-brand-orange transition-colors duration-300 transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-brand-orange transition-colors duration-300 transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.749.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-brand-orange transition-colors duration-300 transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white text-xl font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-brand-orange transition-colors duration-300">Home</a></li>
+                        <li><a href="#about" class="hover:text-brand-orange transition-colors duration-300">About</a></li>
+                        <li><a href="#technology" class="hover:text-brand-orange transition-colors duration-300">Technology</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-orange transition-colors duration-300">FAQ</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors duration-300">Documentation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="text-white text-xl font-semibold mb-6">Support</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-brand-orange transition-colors duration-300">Help Center</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors duration-300">Community</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors duration-300">Bug Reports</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors duration-300">Feature Requests</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 pt-8 mt-12">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">
+                        © 2025 Open Libra. All rights reserved. | Built with ❤️ from the community
+                    </p>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#" class="hover:text-brand-orange transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="hover:text-brand-orange transition-colors duration-300">Terms of Service</a>
+                        <a href="#" class="hover:text-brand-orange transition-colors duration-300">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

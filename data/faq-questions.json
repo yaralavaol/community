@@ -1,0 +1,83 @@
+{
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Common Questions About Open Libra",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is Open Libra?",
+        "answer": "Open Libra is a sovereign, on-chain investment endowment designed to survive and thrive across centuries. It's an AI-plus strategy investment DAO engineered for independent capital management in the age of acceleration."
+      },
+      {
+        "id": 2,
+        "question": "How does Open Libra work?",
+        "answer": "Open Libra operates as a decentralized autonomous organization (DAO) with a century-scale time horizon. It uses blockchain technology to create an execution layer immune to jurisdictional drift, key-man risk, and institutional fragility, providing neutrality and permanence for long-term capital preservation and growth."
+      },
+      {
+        "id": 3,
+        "question": "What makes Open Libra different from traditional investment funds?",
+        "answer": "Unlike traditional funds, Open Libra is designed for perpetual existence with a 100+ year mandate. It combines AI-first investment strategies with blockchain permanence, considers every asset class, and operates independently of traditional financial institutions and their limitations."
+      },
+      {
+        "id": 4,
+        "question": "What is the AI-Plus Strategy?",
+        "answer": "The AI-Plus Strategy is built on the premise that all long-term institutions must correctly navigate the disruption AI will bring to every market. Open Libra's thesis integrates artificial intelligence into investment decision-making while maintaining a broad mandate across all asset classes."
+      },
+      {
+        "id": 5,
+        "question": "How is Open Libra governed?",
+        "answer": "Open Libra operates as a decentralized autonomous organization (DAO) where governance decisions are made collectively by token holders. The governance structure is designed to ensure transparency, accountability, and long-term stability across centuries of operation."
+      },
+      {
+        "id": 6,
+        "question": "What are the three foundation pillars of Open Libra?",
+        "answer": "The three pillars are: 1) Common Good - serving the broader community interest, 2) Independent Capital - maintaining sovereignty from traditional financial systems, and 3) Open Source - ensuring transparency and collaborative development of all protocols and strategies."
+      },
+      {
+        "id": 7,
+        "question": "How can I participate in Open Libra?",
+        "answer": "Participation in Open Libra is available through token acquisition and governance participation. Community members can contribute to the ecosystem through development, governance proposals, and strategic input. Check our official channels for current participation opportunities."
+      },
+      {
+        "id": 8,
+        "question": "What blockchain does Open Libra use?",
+        "answer": "Open Libra operates on a dedicated blockchain infrastructure designed specifically for long-term institutional permanence. This provides the neutrality and immutability required for a century-scale investment mandate."
+      },
+      {
+        "id": 9,
+        "question": "How does Open Libra ensure security?",
+        "answer": "Security is maintained through multiple layers: blockchain immutability, decentralized governance, rigorous smart contract auditing, and distributed key management. The system is designed to be resilient against single points of failure and external manipulation."
+      },
+      {
+        "id": 10,
+        "question": "What is the investment scope of Open Libra?",
+        "answer": "Open Libra maintains a broad investment mandate covering all asset classes - from traditional securities to digital assets, real estate, commodities, and emerging technologies. This 'all weather, all opportunity' approach ensures adaptability across different market conditions and centuries."
+      },
+      {
+        "id": 11,
+        "question": "How does Open Libra handle risk management?",
+        "answer": "Risk management is built into the core architecture through diversified asset allocation, AI-powered analysis, decentralized decision-making, and long-term thinking that can weather short-term volatility. The century-scale time horizon allows for strategic patience in investment decisions."
+      },
+      {
+        "id": 12,
+        "question": "What role does transparency play in Open Libra?",
+        "answer": "Transparency is fundamental to Open Libra's operation. All transactions, governance decisions, and strategic changes are recorded on-chain and publicly verifiable. This creates accountability and trust while maintaining the privacy necessary for strategic operations."
+      },
+      {
+        "id": 13,
+        "question": "How does Open Libra adapt to technological changes?",
+        "answer": "Open Libra is designed to evolve with technological advancement through its AI-first approach, open-source development model, and flexible governance structure. The system can integrate new technologies and adapt strategies as markets and technology evolve over decades."
+      },
+      {
+        "id": 14,
+        "question": "What is the long-term vision for Open Libra?",
+        "answer": "The vision is to create a perpetual institution that preserves and grows capital across centuries, serving as a model for how decentralized organizations can operate independently of traditional power structures while creating value for the global community."
+      },
+      {
+        "id": 15,
+        "question": "How can I stay updated on Open Libra developments?",
+        "answer": "Follow our official channels: GitHub for technical developments, X (Twitter) for announcements and insights, and Discord for community discussions. Regular updates are also published through our official website and documentation."
+      }
+    ]
+  }
+}
